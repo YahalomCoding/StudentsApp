@@ -1,5 +1,6 @@
 package com.students_app
 
+import android.content.Intent
 import androidx.recyclerview.widget.RecyclerView
 import com.students_app.databinding.StudentsListRowBinding
 import com.students_app.models.Student
@@ -11,6 +12,16 @@ class StudentRowViewHolder(private val binding: StudentsListRowBinding) :
 
   init {
     this.binding.checkbox.setOnClickListener { this.student.isChecked = binding.checkbox.isChecked }
+
+    this.binding.root.setOnClickListener {
+        val intent = Intent(binding.root.context, StudentActivity::class.java)
+        intent.putExtra("name", student.name)
+        intent.putExtra("id", student.id)
+        intent.putExtra("phone", student.phone)
+        intent.putExtra("address", student.address)
+        intent.putExtra("isChecked", student.isChecked)
+        binding.root.context.startActivity(intent)
+    }
   }
 
   fun bind(student: Student) {
