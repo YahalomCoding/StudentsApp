@@ -1,22 +1,21 @@
 package com.students_app
 
 import android.os.Bundle
-import android.widget.Toast
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.students_app.databinding.ActivityAddStudentBinding
+import com.students_app.databinding.ActivityEditStudentBinding
 import com.students_app.models.Model
-import com.students_app.models.Student
 
-class AddStudentActivity : AppCompatActivity() {
+class EditStudentActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val binding = ActivityAddStudentBinding.inflate(layoutInflater)
+        val binding = ActivityEditStudentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -29,33 +28,33 @@ class AddStudentActivity : AppCompatActivity() {
 
         binding.studentImage.setImageResource(R.drawable.profile_picture)
 
+        val id = intent.getStringExtra("id")
+        val student = Model.shared.students.find { student -> student.id == id }
+
+        if (student == null) { finish() }
+
+        binding.nameInput.setText(student?.name, TextView.BufferType.EDITABLE)
+        binding.idTextView.text = student?.id
+        binding.phoneInput.setText(student?.phone, TextView.BufferType.EDITABLE)
+        binding.addressInput.setText(student?.address, TextView.BufferType.EDITABLE)
+        binding.isCheckedCheckbox.isChecked = student?.isChecked == true
+
         binding.saveButton.setOnClickListener {
             val name = binding.nameInput.text.toString()
-            val id = binding.idInput.text.toString()
             val phone = binding.phoneInput.text.toString()
             val address = binding.addressInput.text.toString()
             val isChecked = binding.isCheckedCheckbox.isChecked
 
-            if (id.isEmpty()) {
-                val toast = Toast.makeText(this, "ID Must Be Set", Toast.LENGTH_SHORT)
-                toast.show()
-                return@setOnClickListener
-            }
+            student?.name = name
+            student?.phone = phone
+            student?.address = address
+            student?.isChecked = isChecked
 
-            if (Model.shared.students.any { student -> student.id == id }) {
-                val toast = Toast.makeText(this, "ID Must Be Unique", Toast.LENGTH_SHORT)
-                toast.show()
-                return@setOnClickListener
-            }
+            finish()
+        }
 
-            Model.shared.students.add(Student(name, id, phone, address, isChecked))
-
-            binding.nameInput.text.clear()
-            binding.idInput.text.clear()
-            binding.phoneInput.text.clear()
-            binding.addressInput.text.clear()
-            binding.isCheckedCheckbox.isChecked = false
-
+        binding.deleteButton.setOnClickListener {
+            Model.shared.students.removeIf { student ->  student.id == id }
             finish()
         }
 
