@@ -1,19 +1,24 @@
 package com.students_app
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.students_app.databinding.ActivityStudentBinding
+import com.students_app.models.Model
+import com.students_app.models.Student
 
 class StudentActivity : AppCompatActivity() {
+    private var student: Student? = null
+    private lateinit var binding: ActivityStudentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val binding = ActivityStudentBinding.inflate(layoutInflater)
+        binding = ActivityStudentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -24,11 +29,26 @@ class StudentActivity : AppCompatActivity() {
 
         binding.backButton.setOnClickListener { finish() }
 
-        binding.nameTextView.text = intent.getStringExtra("name")
-        binding.idTextView.text = intent.getStringExtra("id")
-        binding.phoneTextView.text = intent.getStringExtra("phone")
-        binding.addressTextView.text = intent.getStringExtra("address")
-        binding.isCheckedCheckbox.isChecked = intent.getBooleanExtra("isChecked", false)
+        binding.editButton.setOnClickListener {
+            val intent = Intent(this, EditStudentActivity::class.java)
+            intent.putExtra("id", this.student?.id)
+            startActivity(intent)
+        }
+
+        val id = intent.getStringExtra("id")
+        this.student = Model.shared.students.find { student -> student.id == id }
+
+        if (this.student == null) { finish() }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!Model.shared.students.any { student -> student.id == this.student?.id }) { finish() }
+        binding.nameTextView.text = this.student?.name
+        binding.idTextView.text = this.student?.id
+        binding.phoneTextView.text = this.student?.phone
+        binding.addressTextView.text = this.student?.address
+        binding.isCheckedCheckbox.isChecked = this.student?.isChecked == true
 
         binding.studentImage.setImageResource(R.drawable.profile_picture)
     }

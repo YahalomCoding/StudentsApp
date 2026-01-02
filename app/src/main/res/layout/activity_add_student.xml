@@ -52,7 +52,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/name_text_view"
+        android:id="@+id/name_title_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -62,30 +62,30 @@
         app:layout_constraintTop_toTopOf="@+id/name_input" />
 
     <TextView
-        android:id="@+id/id_text_view"
+        android:id="@+id/id_title_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Id:"
         app:layout_constraintBottom_toBottomOf="@+id/id_input"
-        app:layout_constraintStart_toStartOf="@+id/name_text_view"
+        app:layout_constraintStart_toStartOf="@+id/name_title_text_view"
         app:layout_constraintTop_toTopOf="@+id/id_input" />
 
     <TextView
-        android:id="@+id/phone_text_view"
+        android:id="@+id/phone_title_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Phone:"
         app:layout_constraintBottom_toBottomOf="@+id/phone_input"
-        app:layout_constraintStart_toStartOf="@+id/id_text_view"
+        app:layout_constraintStart_toStartOf="@+id/id_title_text_view"
         app:layout_constraintTop_toTopOf="@+id/phone_input" />
 
     <TextView
-        android:id="@+id/address_text_view"
+        android:id="@+id/address_title_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Address:"
         app:layout_constraintBottom_toBottomOf="@+id/address_input"
-        app:layout_constraintStart_toStartOf="@+id/phone_text_view"
+        app:layout_constraintStart_toStartOf="@+id/phone_title_text_view"
         app:layout_constraintTop_toTopOf="@+id/address_input" />
 
     <EditText
@@ -127,7 +127,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintStart_toEndOf="@+id/address_text_view"
+        app:layout_constraintStart_toEndOf="@+id/address_title_text_view"
         app:layout_constraintTop_toBottomOf="@+id/phone_input" />
 
     <CheckBox

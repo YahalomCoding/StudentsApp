@@ -11,9 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudentsApp">
         <activity
-            android:name=".StudentActivity"
-            android:exported="false" />
-        <activity
             android:name=".StudentsListActivity"
             android:exported="true">
             <intent-filter>
@@ -24,6 +21,12 @@
         </activity>
         <activity
             android:name=".AddStudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditStudentActivity"
             android:exported="false" />
     </application>
 

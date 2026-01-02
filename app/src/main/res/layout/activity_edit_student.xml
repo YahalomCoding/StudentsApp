@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudentActivity">
+    tools:context=".EditStudentActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/student_toolbar"
@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
-        android:text="Students Details"
+        android:text="Edit Students"
         app:layout_constraintBottom_toBottomOf="@+id/student_toolbar"
         app:layout_constraintStart_toStartOf="@+id/student_toolbar"
         app:layout_constraintTop_toTopOf="@+id/student_toolbar" />
@@ -39,7 +39,7 @@
         app:srcCompat="@android:drawable/ic_menu_revert"
         android:clickable="true"
         android:focusable="true"
-        android:background="?android:attr/selectableItemBackground"/>
+        android:background="?android:attr/selectableItemBackground" />
 
     <ImageView
         android:id="@+id/student_image"
@@ -57,9 +57,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:text="Name:"
-        app:layout_constraintBottom_toBottomOf="@+id/name_text_view"
+        app:layout_constraintBottom_toBottomOf="@+id/name_input"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/name_text_view" />
+        app:layout_constraintTop_toTopOf="@+id/name_input" />
 
     <TextView
         android:id="@+id/id_title_text_view"
@@ -75,26 +75,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Phone:"
-        app:layout_constraintBottom_toBottomOf="@+id/phone_text_view"
+        app:layout_constraintBottom_toBottomOf="@+id/phone_input"
         app:layout_constraintStart_toStartOf="@+id/id_title_text_view"
-        app:layout_constraintTop_toTopOf="@+id/phone_text_view" />
+        app:layout_constraintTop_toTopOf="@+id/phone_input" />
 
     <TextView
         android:id="@+id/address_title_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Address:"
-        app:layout_constraintBottom_toBottomOf="@+id/address_text_view"
+        app:layout_constraintBottom_toBottomOf="@+id/address_input"
         app:layout_constraintStart_toStartOf="@+id/phone_title_text_view"
-        app:layout_constraintTop_toTopOf="@+id/address_text_view" />
+        app:layout_constraintTop_toTopOf="@+id/address_input" />
 
-    <TextView
-        android:id="@+id/name_text_view"
+    <EditText
+        android:id="@+id/name_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        app:layout_constraintEnd_toEndOf="@+id/id_text_view"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/id_text_view"
         app:layout_constraintTop_toBottomOf="@+id/student_image" />
 
     <TextView
@@ -103,28 +104,30 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        app:layout_constraintEnd_toEndOf="@+id/phone_text_view"
-        app:layout_constraintTop_toBottomOf="@+id/name_text_view" />
+        app:layout_constraintStart_toStartOf="@+id/phone_input"
+        app:layout_constraintTop_toBottomOf="@+id/name_input" />
 
-    <TextView
-        android:id="@+id/phone_text_view"
+    <EditText
+        android:id="@+id/phone_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        app:layout_constraintEnd_toEndOf="@+id/address_text_view"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="@+id/address_input"
         app:layout_constraintTop_toBottomOf="@+id/id_text_view" />
 
 
-    <TextView
-        android:id="@+id/address_text_view"
+    <EditText
+        android:id="@+id/address_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:ems="10"
+        android:inputType="text"
         app:layout_constraintStart_toEndOf="@+id/address_title_text_view"
-        app:layout_constraintTop_toBottomOf="@+id/phone_text_view" />
+        app:layout_constraintTop_toBottomOf="@+id/phone_input" />
 
     <CheckBox
         android:id="@+id/is_checked_checkbox"
@@ -132,19 +135,37 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="16dp"
-        android:clickable="false"
         android:text="Checked"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address_text_view" />
+        app:layout_constraintTop_toBottomOf="@+id/address_input" />
 
     <Button
-        android:id="@+id/edit_button"
+        android:id="@+id/cancel_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="62dp"
-        android:layout_marginBottom="32dp"
-        android:text="Edit"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="36dp"
+        android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="36dp"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cancel_button" />
+
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="@+id/cancel_button"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,11 +15,7 @@ class StudentRowViewHolder(private val binding: StudentsListRowBinding) :
 
     this.binding.root.setOnClickListener {
         val intent = Intent(binding.root.context, StudentActivity::class.java)
-        intent.putExtra("name", student.name)
         intent.putExtra("id", student.id)
-        intent.putExtra("phone", student.phone)
-        intent.putExtra("address", student.address)
-        intent.putExtra("isChecked", student.isChecked)
         binding.root.context.startActivity(intent)
     }
   }
