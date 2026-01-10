@@ -5,10 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddStudentActivity">
+    tools:context=".EditStudentActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/add_student_toolbar"
+        android:id="@+id/student_toolbar"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:background="#E4D9D9"
@@ -19,23 +19,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/add_student_toolbar_text"
+        android:id="@+id/student_toolbar_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
-        android:text="New Students"
-        app:layout_constraintBottom_toBottomOf="@+id/add_student_toolbar"
-        app:layout_constraintStart_toStartOf="@+id/add_student_toolbar"
-        app:layout_constraintTop_toTopOf="@+id/add_student_toolbar" />
+        android:text="Edit Students"
+        app:layout_constraintBottom_toBottomOf="@+id/student_toolbar"
+        app:layout_constraintStart_toStartOf="@+id/student_toolbar"
+        app:layout_constraintTop_toTopOf="@+id/student_toolbar" />
 
     <ImageView
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/add_student_toolbar"
+        app:layout_constraintBottom_toBottomOf="@+id/student_toolbar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/add_student_toolbar"
+        app:layout_constraintTop_toTopOf="@+id/student_toolbar"
         app:srcCompat="@android:drawable/ic_menu_revert"
         android:clickable="true"
         android:focusable="true"
@@ -48,7 +48,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_student_toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/student_toolbar"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -66,9 +66,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Id:"
-        app:layout_constraintBottom_toBottomOf="@+id/id_input"
+        app:layout_constraintBottom_toBottomOf="@+id/id_text_view"
         app:layout_constraintStart_toStartOf="@+id/name_title_text_view"
-        app:layout_constraintTop_toTopOf="@+id/id_input" />
+        app:layout_constraintTop_toTopOf="@+id/id_text_view" />
 
     <TextView
         android:id="@+id/phone_title_text_view"
@@ -95,17 +95,16 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/id_input"
+        app:layout_constraintStart_toStartOf="@+id/id_text_view"
         app:layout_constraintTop_toBottomOf="@+id/student_image" />
 
-    <EditText
-        android:id="@+id/id_input"
+    <TextView
+        android:id="@+id/id_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/phone_input"
+        app:layout_constraintStart_toStartOf="@+id/phone_input"
         app:layout_constraintTop_toBottomOf="@+id/name_input" />
 
     <EditText
@@ -115,8 +114,8 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="@+id/address_input"
-        app:layout_constraintTop_toBottomOf="@+id/id_input" />
+        app:layout_constraintStart_toStartOf="@+id/address_input"
+        app:layout_constraintTop_toBottomOf="@+id/id_text_view" />
 
 
     <EditText
@@ -144,17 +143,27 @@
         android:id="@+id/cancel_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="36dp"
         android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:id="@+id/delete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="36dp"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cancel_button" />
+
+    <Button
         android:id="@+id/save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="96dp"
+        android:layout_marginEnd="32dp"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="@+id/cancel_button"
         app:layout_constraintEnd_toEndOf="parent" />
