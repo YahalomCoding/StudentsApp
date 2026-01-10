@@ -14,9 +14,9 @@ class StudentRowViewHolder(private val binding: StudentsListRowBinding) :
     this.binding.checkbox.setOnClickListener { this.student.isChecked = binding.checkbox.isChecked }
 
     this.binding.root.setOnClickListener {
-        val intent = Intent(binding.root.context, StudentActivity::class.java)
-        intent.putExtra("id", student.id)
-        binding.root.context.startActivity(intent)
+      val intent = Intent(binding.root.context, StudentActivity::class.java)
+      intent.putExtra("id", student.id)
+      binding.root.context.startActivity(intent)
     }
   }
 
